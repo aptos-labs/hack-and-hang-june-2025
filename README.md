@@ -1,20 +1,50 @@
 ## Permissionless 2025 Hack and Hang
 
-The game is called Pig.
+Welcome to the Pig Game challenge! Build your own implementation of the classic Pig dice game on Aptos using Move smart contracts.
 
-- 1 player, 1 die game
-    - Goal — Reach a score of 100
-    - A new game will start on the first roll.
-    - Continuously roll a die until 1 is rolled or the player calls hold — Consider hold or 1 as turns.
-    - If a player rolls any other number than 1, the number is added to their turn score — consider these as rounds.
-    - If it is 1, their current turn score is set to 0, and a new turn begins.
-    - If they call hold, their turn ends, and those points are added to their total score.  A new turn begins.
-    - If the player calls complete game, the game ends, complete_game is called in pig master with the results.
-    - If the game has been completed, then it can be reset, and a new game started.
+## 🎮 Game Overview
+Pig is a simple dice game where players try to reach a score of 100 points:
 
-## Layout
+Goal: Reach a score of 100 points in as few turns as possible
+Setup: 1 player, 1 die
+Gameplay:
 
-- `contract/`: Contains the Move smart contract code
-    - `contract/pig-game`: This is the code for you to fill in the Pig Game contract.
-    - `contract/pig-master`: This is the code for maintaining scoring for the Pig game across all implementations.
-- `website/`: Contains the React website code
+- Each turn, roll the die repeatedly until you roll a 1 or decide to "hold"
+- If you roll 1: you score nothing and your turn ends ("bust")
+- If you roll 2-6: add that number to your turn total and continue rolling
+- If you "hold": your turn total is added to your score and your turn ends
+- If the player calls complete game, the game ends, complete_game is called in pig master with the results.
+- If the game has been completed, then it can be reset, and a new game started.
+
+## 🎯 Challenge Requirements
+What You Need to Build
+You'll implement your own version of the Pig game contract in contract/pig-game/sources/pig_game.move. The starter code provides the exact function signatures you must implement - do not change these signatures as the UI depends on them. Deploy your contract on testnet & once deployed, your contract will work with the provided UI at https://hack-and-hang-june-2025.vercel.app/
+
+## 🏗️ Project Structure
+contract/
+├── pig-game/          # 👈 Implement your game logic here
+│   ├── sources/
+│   │   └── pig_game.move    # Your implementation
+│   ├── Move.toml
+│   └── tests/
+└── pig-master/        # 👈 Global scoring system (pre-built)
+    ├── sources/
+    │   └── pig_master.move  # Tracks all players' stats
+    └── Move.toml
+
+website/               # React frontend (already deployed)
+├── src/
+└── package.json
+
+
+## Additional Notes
+
+- Linking to Pig Master: The pig_master contract tracks global leaderboards and statistics. When your game completes, report the result to the master contract for global tracking. 
+- For secure dice rolls, use Aptos's on-chain randomness API. Refer the [randomness docs](https://aptos.dev/en/build/smart-contracts/randomness) for more.
+
+## 📚 Learning Resources
+Core Aptos Development
+
+🏗️ Smart Contracts Guide: https://aptos.dev/en/build/smart-contracts
+📖 ToDo Move Contract Tutorial: https://aptos.dev/en/build/guides/build-e2e-dapp/1-create-smart-contract
+🎓 Aptos Learn: https://learn.aptoslabs.com/en/code-examples
