@@ -36,6 +36,31 @@ website/               # React frontend (already deployed)
 ├── src/
 └── package.json
 
+## Setup your Environment
+
+- Install CLI by following the [instructions here](https://aptos.dev/en/build/cli).
+- Initialize your account on testnet with the following command:
+
+`aptos init`
+
+- Fund your account with testnet tokens with the following command:
+
+`aptos account fund-with-faucet --account default`
+
+- Setup move project in your directory:
+
+`aptos move init --name pig-game`
+
+- Compile & deploy your contract:
+
+`aptos move compile` 
+
+`aptos move publish`
+
+- Test your contract:
+
+`aptos move test`
+
 
 ## Additional Notes
 
