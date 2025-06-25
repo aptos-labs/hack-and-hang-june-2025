@@ -3,9 +3,9 @@
 Welcome to the Pig Game challenge! Build your own implementation of the classic Pig dice game on Aptos using Move smart contracts.
 
 ## 🎮 Game Overview
-Pig is a simple dice game where players try to reach a score of 100 points:
+Pig is a simple dice game where players try to reach a score of 50 points:
 
-Goal: Reach a score of 100 points in as few turns as possible
+Goal: Reach a score of 50 points in as few turns as possible
 Setup: 1 player, 1 die
 Gameplay:
 
@@ -38,10 +38,12 @@ website/               # React frontend (already deployed)
 
 ## Setup your Environment
 
-- Install CLI by following the [instructions here](https://aptos.dev/en/build/cli).
+- [Fork this repository](https://github.com/aptos-labs/hack-and-hang-june-2025/fork)
+- [Clone your forked repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
+- Install the [Aptos CLI](https://aptos.dev/en/build/cli)
 - Initialize your account on testnet with the following command:
 
-`aptos init`
+`aptos init --network testnet`
 
 - Fund your account with testnet tokens with the following command:
 
@@ -60,6 +62,12 @@ website/               # React frontend (already deployed)
 - Test your contract:
 
 `aptos move test`
+
+* Visit the [website](https://hack-and-hang-june-2025.vercel.app/)
+    * Connect your Aptos connect wallet to the website.
+    * Fund the account with some testnet APT using the [Faucet](https://aptos.dev/en/network/faucet).
+    * Enter your contract address in the input field (who deployed it).
+    * Play the Pig game by rolling the die, holding, and completing the game.
 
 
 ## Additional Notes

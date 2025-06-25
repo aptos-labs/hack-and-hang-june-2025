@@ -24,8 +24,8 @@ export function MatrixRain() {
     const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
     const matrixArray = matrix.split("");
 
-    const fontSize = 10;
-    const columns = canvas.width / fontSize;
+    const fontSize = 14;
+    const columns = Math.floor(canvas.width / fontSize);
 
     // Array to track the y position of each column
     const drops: number[] = [];
@@ -35,20 +35,18 @@ export function MatrixRain() {
 
     // Drawing the characters
     function draw() {
-      // Black BG for the canvas
-      // Translucent to show trail
       if (!ctx || !canvas) return;
-      ctx.fillStyle = "rgba(0, 26, 0, 0.04)";
+      // Beige BG for the canvas, translucent to show trail
+      ctx.fillStyle = "rgba(0,0,0,0.08)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      ctx.fillStyle = "#0F0"; // Green text
+      ctx.fillStyle = "#F5E2C4"; // Beige text
       ctx.font = fontSize + "px monospace";
 
       // Looping over drops
       for (let i = 0; i < drops.length; i++) {
         // A random character
         const text = matrixArray[Math.floor(Math.random() * matrixArray.length)];
-
         // x = i*fontSize, y = value of drops[i]*fontSize
         ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 

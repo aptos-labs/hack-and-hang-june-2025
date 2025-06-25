@@ -4,7 +4,7 @@ version = "1.0.0"
 authors = []
 
 [addresses]
-pig_master_addr = "0x17e082f3b25cd33058e5fdb13fda592a4d691e1a3c922f091431240d4a830795"
+pig_master_addr = "0xda81e838661e2e314b08c09efd26db04c529e02e26359bdafd3ad6fff81489d7"
 
 [dependencies]
 AptosFramework = { git = "https://github.com/aptos-labs/aptos-framework.git", rev = "mainnet", subdir = "aptos-framework" }

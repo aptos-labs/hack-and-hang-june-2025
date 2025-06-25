@@ -6,66 +6,68 @@
 
 @layer base {
   :root {
-    --background: 120 100% 2%;
-    --foreground: 120 100% 50%;
+    --beige: 39 62% 89%; /* #F5E2C4 */
+    --black: 0 0% 0%;
+    --background: var(--beige);
+    --foreground: var(--black);
 
-    --card: 120 100% 3%;
-    --card-foreground: 120 100% 60%;
+    --card: var(--beige);
+    --card-foreground: var(--black);
 
-    --popover: 120 100% 3%;
-    --popover-foreground: 120 100% 60%;
+    --popover: var(--beige);
+    --popover-foreground: var(--black);
 
-    --primary: 120 100% 50%;
-    --primary-foreground: 120 100% 2%;
+    --primary: var(--black);
+    --primary-foreground: var(--beige);
 
-    --secondary: 120 100% 8%;
-    --secondary-foreground: 120 100% 70%;
-    --secondary-text: 120, 100%, 40%;
+    --secondary: 39 62% 80%;
+    --secondary-foreground: var(--black);
+    --secondary-text: 39, 62%, 40%;
 
-    --muted: 120 100% 8%;
-    --muted-foreground: 120 100% 40%;
+    --muted: 39 62% 80%;
+    --muted-foreground: var(--black);
 
-    --accent: 120 100% 15%;
-    --accent-foreground: 120 100% 80%;
+    --accent: 39 62% 80%;
+    --accent-foreground: var(--black);
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 120 100% 2%;
+    --destructive-foreground: var(--beige);
 
-    --border: 120 100% 15%;
-    --input: 120 100% 8%;
-    --ring: 120 100% 50%;
+    --border: var(--black);
+    --input: 39 62% 80%;
+    --ring: var(--black);
 
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 120 100% 2%;
-    --foreground: 120 100% 50%;
+    --background: var(--black);
+    --foreground: var(--beige);
 
-    --card: 120 100% 3%;
-    --card-foreground: 120 100% 60%;
+    --card: var(--black);
+    --card-foreground: var(--beige);
 
-    --popover: 120 100% 3%;
-    --popover-foreground: 120 100% 60%;
+    --popover: var(--black);
+    --popover-foreground: var(--beige);
 
-    --primary: 120 100% 50%;
-    --primary-foreground: 120 100% 2%;
+    --primary: var(--beige);
+    --primary-foreground: var(--black);
 
-    --secondary: 120 100% 8%;
-    --secondary-foreground: 120 100% 70%;
+    --secondary: 39 62% 20%;
+    --secondary-foreground: var(--beige);
 
-    --muted: 120 100% 8%;
-    --muted-foreground: 120 100% 40%;
+    --muted: 39 62% 20%;
+    --muted-foreground: var(--beige);
 
-    --accent: 120 100% 15%;
-    --accent-foreground: 120 100% 80%;
+    --accent: 39 62% 20%;
+    --accent-foreground: var(--beige);
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 120 100% 2%;
+    --destructive-foreground: var(--beige);
 
-    --border: 120 100% 15%;
-    --input: 120 100% 8%;
-    --ring: 120 100% 50%;
+    --border: var(--beige);
+    --input: 39 62% 20%;
+    --ring: var(--beige);
   }
 }
 
@@ -76,7 +78,7 @@
   body {
     @apply bg-background text-foreground;
     font-family: "Share Tech Mono", monospace;
-    background: linear-gradient(135deg, #001a00 0%, #003300 50%, #001a00 100%);
+    background: linear-gradient(135deg, #f5e2c4 0%, #e5d3b3 50%, #f5e2c4 100%);
     min-height: 100vh;
     position: relative;
     overflow-x: hidden;
@@ -91,9 +93,9 @@
     width: 100%;
     height: 100%;
     background:
-      radial-gradient(circle at 20% 50%, rgba(0, 255, 0, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, rgba(0, 255, 0, 0.05) 0%, transparent 50%),
-      radial-gradient(circle at 40% 80%, rgba(0, 255, 0, 0.08) 0%, transparent 50%);
+      radial-gradient(circle at 20% 50%, rgba(0, 0, 0, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(0, 0, 0, 0.04) 0%, transparent 50%),
+      radial-gradient(circle at 40% 80%, rgba(0, 0, 0, 0.06) 0%, transparent 50%);
     pointer-events: none;
     z-index: -1;
   }
@@ -104,109 +106,111 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #001a00;
+    background: #f5e2c4;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #00ff00;
+    background: #000;
     border-radius: 4px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #00cc00;
+    background: #222;
   }
 
   /* Selection styling */
   ::selection {
-    background: rgba(0, 255, 0, 0.3);
-    color: #00ff00;
+    background: rgba(0, 0, 0, 0.15);
+    color: #000;
   }
 
   ::-moz-selection {
-    background: rgba(0, 255, 0, 0.3);
-    color: #00ff00;
+    background: rgba(0, 0, 0, 0.15);
+    color: #000;
   }
 }
 
 @layer components {
   .matrix-glow {
     text-shadow:
-      0 0 5px #00ff00,
-      0 0 10px #00ff00,
-      0 0 15px #00ff00,
-      0 0 20px #00ff00;
+      0 0 5px #000,
+      0 0 10px #000,
+      0 0 15px #000,
+      0 0 20px #000;
+    color: #f5e2c4;
   }
 
   .matrix-border {
-    border: 1px solid #00ff00;
+    border: 1px solid #000;
     box-shadow:
-      0 0 5px #00ff00,
-      inset 0 0 5px rgba(0, 255, 0, 0.1);
+      0 0 5px #000,
+      inset 0 0 5px rgba(0, 0, 0, 0.1);
   }
 
   .matrix-card {
-    background: linear-gradient(145deg, #001a00, #003300);
-    border: 1px solid #00ff00;
+    background: linear-gradient(145deg, #f5e2c4, #e5d3b3);
+    border: 1px solid #000;
     box-shadow:
-      0 0 10px rgba(0, 255, 0, 0.3),
-      inset 0 0 20px rgba(0, 255, 0, 0.1);
+      0 0 10px rgba(0, 0, 0, 0.15),
+      inset 0 0 20px rgba(0, 0, 0, 0.05);
     backdrop-filter: blur(10px);
+    color: #000;
   }
 
   .matrix-button {
-    background: linear-gradient(145deg, #004400, #006600);
-    border: 1px solid #00ff00;
-    color: #00ff00;
-    text-shadow: 0 0 5px #00ff00;
+    background: linear-gradient(145deg, #000, #222);
+    border: 1px solid #f5e2c4;
+    color: #f5e2c4;
+    text-shadow: 0 0 5px #000;
     box-shadow:
-      0 0 10px rgba(0, 255, 0, 0.3),
-      inset 0 0 10px rgba(0, 255, 0, 0.1);
+      0 0 10px rgba(0, 0, 0, 0.2),
+      inset 0 0 10px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
   }
 
   .matrix-button:hover {
-    background: linear-gradient(145deg, #006600, #008800);
+    background: linear-gradient(145deg, #222, #000);
     box-shadow:
-      0 0 20px rgba(0, 255, 0, 0.5),
-      inset 0 0 15px rgba(0, 255, 0, 0.2);
+      0 0 20px rgba(0, 0, 0, 0.3),
+      inset 0 0 15px rgba(0, 0, 0, 0.12);
     transform: translateY(-2px);
   }
 
   .matrix-input {
-    background: rgba(0, 26, 0, 0.8);
-    border: 1px solid #00ff00;
-    color: #00ff00;
+    background: rgba(245, 226, 196, 0.8);
+    border: 1px solid #000;
+    color: #000;
     box-shadow:
-      0 0 5px rgba(0, 255, 0, 0.3),
-      inset 0 0 10px rgba(0, 255, 0, 0.1);
+      0 0 5px rgba(0, 0, 0, 0.1),
+      inset 0 0 10px rgba(0, 0, 0, 0.05);
   }
 
   .matrix-input:focus {
     box-shadow:
-      0 0 15px rgba(0, 255, 0, 0.5),
-      inset 0 0 15px rgba(0, 255, 0, 0.2);
+      0 0 15px rgba(0, 0, 0, 0.2),
+      inset 0 0 15px rgba(0, 0, 0, 0.08);
   }
 
   .matrix-text {
-    color: #00ff00;
-    text-shadow: 0 0 5px #00ff00;
+    color: #000;
+    text-shadow: 0 0 5px #f5e2c4;
   }
 
   .matrix-title {
     font-family: "Orbitron", monospace;
     font-weight: 900;
-    color: #00ff00;
+    color: #000;
     text-shadow:
-      0 0 10px #00ff00,
-      0 0 20px #00ff00,
-      0 0 30px #00ff00;
+      0 0 10px #f5e2c4,
+      0 0 20px #f5e2c4,
+      0 0 30px #f5e2c4;
   }
 
   .matrix-subtitle {
     font-family: "Orbitron", monospace;
     font-weight: 700;
-    color: #00cc00;
-    text-shadow: 0 0 8px #00cc00;
+    color: #000;
+    text-shadow: 0 0 8px #f5e2c4;
   }
 
   .matrix-rain {
@@ -231,8 +235,8 @@
       90deg,
       transparent,
       transparent 2px,
-      rgba(0, 255, 0, 0.1) 2px,
-      rgba(0, 255, 0, 0.1) 4px
+      rgba(0, 0, 0, 0.08) 2px,
+      rgba(0, 0, 0, 0.08) 4px
     );
     animation: matrix-rain 20s linear infinite;
   }
@@ -253,15 +257,15 @@
   @keyframes pulse-glow {
     from {
       box-shadow:
-        0 0 5px rgba(0, 255, 0, 0.3),
-        0 0 10px rgba(0, 255, 0, 0.2),
-        0 0 15px rgba(0, 255, 0, 0.1);
+        0 0 5px rgba(0, 0, 0, 0.1),
+        0 0 10px rgba(0, 0, 0, 0.08),
+        0 0 15px rgba(0, 0, 0, 0.05);
     }
     to {
       box-shadow:
-        0 0 10px rgba(0, 255, 0, 0.5),
-        0 0 20px rgba(0, 255, 0, 0.3),
-        0 0 30px rgba(0, 255, 0, 0.2);
+        0 0 10px rgba(0, 0, 0, 0.2),
+        0 0 20px rgba(0, 0, 0, 0.12),
+        0 0 30px rgba(0, 0, 0, 0.08);
     }
   }
 
@@ -294,7 +298,7 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.2), transparent);
+    background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.08), transparent);
     animation: matrix-scan 3s ease-in-out infinite;
   }
 
@@ -309,7 +313,7 @@
 
   .matrix-typing {
     overflow: hidden;
-    border-right: 2px solid #00ff00;
+    border-right: 2px solid #000;
     white-space: nowrap;
     animation:
       matrix-typing 3s steps(40, end),
@@ -331,7 +335,7 @@
       border-color: transparent;
     }
     50% {
-      border-color: #00ff00;
+      border-color: #000;
     }
   }
 }

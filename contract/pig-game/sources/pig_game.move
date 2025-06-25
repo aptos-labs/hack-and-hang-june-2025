@@ -15,9 +15,15 @@ module pig_game_addr::pig_game {
     const E_NOT_IMPLEMENTED: u64 = 1;
 
     // ======================== Entry (Write) functions ========================
-
+    #[randomness]
     /// Roll the dice
     entry fun roll_dice(user: &signer) {
+        abort E_NOT_IMPLEMENTED
+    }
+
+    #[test_only]
+    /// Optional, useful for testing purposes
+    fun roll_dice_for_test(user: &signer, num: u8) {
         abort E_NOT_IMPLEMENTED
     }
 
@@ -28,7 +34,7 @@ module pig_game_addr::pig_game {
     }
 
     /// The intended score has been reached, end the game, publish the
-    /// score to both the local and global database.
+    /// score to both the global storage
     entry fun complete_game(user: &signer) {
         abort E_NOT_IMPLEMENTED
     }
@@ -41,39 +47,43 @@ module pig_game_addr::pig_game {
     // ======================== View (Read) Functions ========================
 
     #[view]
-    /// Return the last dice roll
+    /// Return the user's last roll value from the current game, 0 is considered no roll / hold
     public fun last_roll(user: address): u8 {
         abort E_NOT_IMPLEMENTED
     }
 
     #[view]
+    /// Tells us which number round the game is on, this only resets when the game is reset
+    ///
+    /// This increments every time the user rolls the dice or holds
     public fun round(user: address): u64 {
         abort E_NOT_IMPLEMENTED
     }
 
     #[view]
+    /// Tells us which number turn the game is on, this only resets when the game is reset
+    ///
+    /// This increments every time the user rolls a 1 or holds
     public fun turn(user: address): u64 {
         abort E_NOT_IMPLEMENTED
     }
 
     #[view]
+    /// Tells us whether the game is over for the user (the user has reached the target score)
     public fun game_over(user: address): bool {
         abort E_NOT_IMPLEMENTED
     }
 
     #[view]
+    /// Return the user's current turn score, this is the score accumulated during the current turn.  If the player holds
+    /// this score will be added to the total score for the game.
     public fun turn_score(user: address): u64 {
         abort E_NOT_IMPLEMENTED
     }
 
     #[view]
+    /// Return the user's current total game score for the current game, this does not include the current turn score
     public fun total_score(user: address): u64 {
-        abort E_NOT_IMPLEMENTED
-    }
-
-    #[view]
-    /// Return the user's top score within this game's context
-    public fun user_top_score(user: address): u64 {
         abort E_NOT_IMPLEMENTED
     }
 
@@ -84,14 +94,8 @@ module pig_game_addr::pig_game {
     }
 
     #[view]
-    /// Return the user's top score across all games
-    public fun user_global_top_score(user: address) {
-        abort E_NOT_IMPLEMENTED
-    }
-
-    #[view]
-    /// Return the user's total number of games played
-    public fun user_global_games_played(user: address): u64 {
+    /// Return total number of games played within this game's context for the given user
+    public fun user_games_played(user: address): u64 {
         abort E_NOT_IMPLEMENTED
     }
 }

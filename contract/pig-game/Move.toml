@@ -11,5 +11,6 @@ pig_game_addr = "0x1234567890abcdef1234567890abcdef123456"
 
 [dependencies]
 AptosFramework = { git = "https://github.com/aptos-labs/aptos-framework.git", rev = "mainnet", subdir = "aptos-framework" }
+PigMaster = { local = "../pig-master" }
 
 [dev-dependencies]

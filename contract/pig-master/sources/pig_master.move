@@ -16,7 +16,7 @@ module pig_master_addr::pig_master {
     const E_NOT_IMPLEMENTED: u64 = 1;
 
     /// Points to win the game are currently set to 100, we may change it to be lower to be a faster game.
-    const POINTS_TO_WIN: u64 = 100;
+    const POINTS_TO_WIN: u64 = 20;
 
     const MAX_U64: u64 = 18446744073709551615;
 
@@ -24,6 +24,7 @@ module pig_master_addr::pig_master {
     /// and their top scores.  Note that this currently is not an ordered scoreboard.
     struct GameState has key {
         stats: SmartTable<address, UserStats>,
+        top_result: Option<GameEndResult>,
         total_games_played: aggregator_v2::Aggregator<u64>,
         total_players: aggregator_v2::Aggregator<u64>,
     }
@@ -60,6 +61,7 @@ module pig_master_addr::pig_master {
             stats: smart_table::new<address, UserStats>(),
             total_games_played: aggregator_v2::create_aggregator_with_value(0, MAX_U64),
             total_players: aggregator_v2::create_aggregator_with_value(0, MAX_U64),
+            top_result: option::none(),
         };
         move_to(deployer, game_state);
     }
@@ -100,10 +102,30 @@ module pig_master_addr::pig_master {
         } else {
             // If the user exists, update their stats
             let user_stats = game_state.stats.borrow_mut(user_address);
-            if (user_stats.top_result.score < result.score) {
+            if (user_stats.top_result.turns > result.turns) {
+                user_stats.top_result = result;
+            } else if (user_stats.top_result.turns == result.turns && user_stats.top_result.rounds > result.rounds) {
                 user_stats.top_result = result;
             };
             user_stats.games_played += 1;
+        };
+
+        if (game_state.top_result.is_none()) {
+            game_state.top_result = option::some(GameEndResult {
+                user: user_address,
+                result
+            });
+        } else if (game_state.top_result.borrow().result.turns > result.turns) {
+            game_state.top_result = option::some(GameEndResult {
+                user: user_address,
+                result
+            });
+        } else if (game_state.top_result.borrow().result.turns == result.turns && game_state.top_result.borrow(
+        ).result.rounds > result.rounds) {
+            game_state.top_result = option::some(GameEndResult {
+                user: user_address,
+                result
+            });
         };
 
         aggregator_v2::add(&mut game_state.total_games_played, 1);
@@ -137,6 +159,12 @@ module pig_master_addr::pig_master {
                 game_state.stats.borrow(user).top_result
             )
         }
+    }
+
+    #[view]
+    public fun global_top_score(): Option<GameEndResult> acquires GameState {
+        let game_state = &GameState[@pig_master_addr];
+        game_state.top_result
     }
 
     #[view]
