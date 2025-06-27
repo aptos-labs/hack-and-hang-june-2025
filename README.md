@@ -51,6 +51,22 @@ website/               # React frontend (already deployed)
 
 `aptos move init --name pig-game`
 
+- **Configure your Move.toml file:**
+  
+  Before compiling, you need to update `contract/pig-game/Move.toml`:
+  
+  1. Set `pig_game_addr` to your wallet address (the same address from `aptos init`)
+  2. Remove the `[dev-addresses]` section - it will be generated automatically
+  
+  Example:
+  ```toml
+  [addresses]
+  pig_game_addr = "0x1234567890abcdef1234567890abcdef12345678"  # Your wallet address
+  
+  # Remove this section entirely:
+  # [dev-addresses]
+  ```
+
 - Compile & deploy your contract:
 
 `aptos move compile` 
