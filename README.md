@@ -21,6 +21,7 @@ What You Need to Build
 You'll implement your own version of the Pig game contract in contract/pig-game/sources/pig_game.move. The starter code provides the exact function signatures you must implement - do not change these signatures as the UI depends on them. Deploy your contract on testnet & once deployed, your contract will work with the provided UI at https://hack-and-hang-june-2025.vercel.app/
 
 ## 🏗️ Project Structure
+```
 contract/
 ├── pig-game/          # 👈 Implement your game logic here
 │   ├── sources/
@@ -35,6 +36,7 @@ contract/
 website/               # React frontend (already deployed)
 ├── src/
 └── package.json
+```
 
 ## Setup your Environment
 
@@ -93,5 +95,7 @@ website/               # React frontend (already deployed)
 Core Aptos Development
 
 🏗️ Smart Contracts Guide: https://aptos.dev/en/build/smart-contracts
+
 📖 ToDo Move Contract Tutorial: https://aptos.dev/en/build/guides/build-e2e-dapp/1-create-smart-contract
+
 🎓 Aptos Learn: https://learn.aptoslabs.com/en/code-examples
