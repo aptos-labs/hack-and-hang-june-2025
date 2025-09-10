@@ -1,0 +1,16 @@
+[package]
+name = "PigGame"
+version = "1.0.0"
+authors = []
+
+[addresses]
+pig_game_addr = "0xea1355afdf213b84cd4266b5c2c530ebda7d9dd0b2edd9170185b9a6cfd174a2"
+
+[dev-addresses]
+#pig_game_addr = "0x1234567890abcdef1234567890abcdef123456"
+
+[dependencies]
+AptosFramework = { git = "https://github.com/aptos-labs/aptos-framework.git", rev = "mainnet", subdir = "aptos-framework" }
+PigMaster = { local = "../pig-master" }
+
+[dev-dependencies]
